@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; }
+
+body, html {
+  height: 100%;
+  font-family: monospace; }
+
+body {
+  background: #faf2f2;
+  height: 100%;
+  display: grid;
+  padding-top: 50px;
+  justify-content: center; }
+
+select, input[type="text"] {
+  padding: 5px;
+  margin-top: 10px;
+  width: 100%; }
+
+main {
+  position: relative; }
+  main header {
+    padding: 0.5em 1em;
+    font-size: 1.5em;
+    border-bottom: 2px solid #faf2f2; }
+  main #alarm .all__alarms, main #stopwatch .all__alarms {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    padding: 5%;
+    border-bottom: 2px solid #faf2f2;
+    align-items: center; }
+  main #alarm .add__alarm, main #alarm .stop_watch, main #alarm .stop_watch_reset, main #alarm .stop_watch_play, main #alarm .stop_watch_flag, main #alarm .stop_watch_pause, main #stopwatch .add__alarm, main #stopwatch .stop_watch, main #stopwatch .stop_watch_reset, main #stopwatch .stop_watch_play, main #stopwatch .stop_watch_flag, main #stopwatch .stop_watch_pause {
+    position: absolute;
+    top: 75%;
+    left: 45%;
+    cursor: pointer; }
+    main #alarm .add__alarm:before, main #alarm .stop_watch:before, main #alarm .stop_watch_reset:before, main #alarm .stop_watch_play:before, main #alarm .stop_watch_flag:before, main #alarm .stop_watch_pause:before, main #stopwatch .add__alarm:before, main #stopwatch .stop_watch:before, main #stopwatch .stop_watch_reset:before, main #stopwatch .stop_watch_play:before, main #stopwatch .stop_watch_flag:before, main #stopwatch .stop_watch_pause:before {
+      content: '+';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #f3e1e1;
+      font-size: 30px;
+      color: #fff;
+      background: #f3e1e1; }
+  main #alarm .stop__flags, main #stopwatch .stop__flags {
+    position: absolute;
+    top: 55%;
+    width: 70%;
+    left: 20%;
+    max-height: 85px;
+    overflow: auto; }
+    main #alarm .stop__flags .single__flag, main #stopwatch .stop__flags .single__flag {
+      display: grid;
+      grid-template-columns: 10% 45% 45%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 2%; }
+  main #alarm .stop_watch, main #stopwatch .stop_watch {
+    top: 16%;
+    left: 30%; }
+    main #alarm .stop_watch:before, main #stopwatch .stop_watch:before {
+      color: #000;
+      content: attr(data-content);
+      background: #fff;
+      width: 150px;
+      height: 150px; }
+  main #alarm .stop_watch_reset, main #stopwatch .stop_watch_reset {
+    top: 76%;
+    left: 30%; }
+    main #alarm .stop_watch_reset:before, main #stopwatch .stop_watch_reset:before {
+      content: '\27F3';
+      font-size: 25px;
+      color: #000;
+      background: #fff;
+      border: none; }
+  main #alarm .stop_watch_play:before, main #stopwatch .stop_watch_play:before {
+    font-family: FontAwesome;
+    content: '\f0da'; }
+  main #alarm .stop_watch_flag, main #stopwatch .stop_watch_flag {
+    top: 76%;
+    left: 60%; }
+    main #alarm .stop_watch_flag:before, main #stopwatch .stop_watch_flag:before {
+      font-family: FontAwesome;
+      content: '\f024';
+      font-size: 20px;
+      color: #000;
+      background: #fff;
+      border: none; }
+  main #alarm .stop_watch_pause:before, main #stopwatch .stop_watch_pause:before {
+    font-family: FontAwesome;
+    content: '\f04c';
+    font-size: 20px; }
+  main#clock__content, main#set__alarm {
+    width: 400px;
+    height: 500px;
+    background: #fff;
+    border-radius: 15px; }
+  main#set__alarm {
+    display: none; }
+    main#set__alarm header {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      /* justify-content: center; */
+      text-align: center; }
+    main#set__alarm #setting_alarm {
+      display: grid;
+      grid-template-columns: 50% 50%; }
+      main#set__alarm #setting_alarm > div {
+        padding: 5%; }
+      main#set__alarm #setting_alarm .set_alarm_title {
+        grid-column: 1/span 2;
+        width: 100%;
+        display: grid; }
+        main#set__alarm #setting_alarm .set_alarm_title input[type="checkbox"] {
+          display: none; }
+        main#set__alarm #setting_alarm .set_alarm_title input:checked + .sun:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .mon:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .tue:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .wed:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .thu:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .fri:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .sat:before {
+          background: #f3e1e1;
+          color: #fff; }
+        main#set__alarm #setting_alarm .set_alarm_title .sun, main#set__alarm #setting_alarm .set_alarm_title .mon, main#set__alarm #setting_alarm .set_alarm_title .tue, main#set__alarm #setting_alarm .set_alarm_title .wed, main#set__alarm #setting_alarm .set_alarm_title .thu, main#set__alarm #setting_alarm .set_alarm_title .fri, main#set__alarm #setting_alarm .set_alarm_title .sat {
+          cursor: pointer; }
+          main#set__alarm #setting_alarm .set_alarm_title .sun:before, main#set__alarm #setting_alarm .set_alarm_title .mon:before, main#set__alarm #setting_alarm .set_alarm_title .tue:before, main#set__alarm #setting_alarm .set_alarm_title .wed:before, main#set__alarm #setting_alarm .set_alarm_title .thu:before, main#set__alarm #setting_alarm .set_alarm_title .fri:before, main#set__alarm #setting_alarm .set_alarm_title .sat:before {
+            content: 'S';
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 15px;
+            color: #000; }
+        main#set__alarm #setting_alarm .set_alarm_title .mon:before {
+          content: 'M'; }
+        main#set__alarm #setting_alarm .set_alarm_title .tue:before {
+          content: 'T'; }
+        main#set__alarm #setting_alarm .set_alarm_title .wed:before {
+          content: 'W'; }
+        main#set__alarm #setting_alarm .set_alarm_title .thu:before {
+          content: 'T'; }
+        main#set__alarm #setting_alarm .set_alarm_title .fri:before {
+          content: 'F'; }
+        main#set__alarm #setting_alarm .set_alarm_title .sat:before {
+          content: 'S'; }
+      main#set__alarm #setting_alarm .set_hour, main#set__alarm #setting_alarm .set_minutes {
+        display: grid;
+        padding: 10%; }
+  main #clock__nav__items {
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+    main #clock__nav__items ul {
+      list-style-type: none;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 25%); }
+      main #clock__nav__items ul li {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        text-align: center;
+        border-top: 2px solid #faf2f2;
+        color: #7d5a5a;
+        cursor: pointer; }
+        main #clock__nav__items ul li i {
+          font-size: 1.5em;
+          padding: 0.5em; }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px; }
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  top: 25%;
+  left: 3%;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: #f1d1d1; }
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #f1d1d1; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px; }
+
+.slider.round:before {
+  border-radius: 50%; }

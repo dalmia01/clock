@@ -1,0 +1,25 @@
+{
+  "name": "clock",
+  "version": "1.0.0",
+  "description": "\"web clock\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w scss -o css",
+    "server": "live-server --port=1234 --open=public --entry-file=index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalmia01/clock.git"
+  },
+  "author": "\"Self\"\u001b[D\u001b[D\u001b[D\u001b[D\u001b[F",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalmia01/clock/issues"
+  },
+  "homepage": "https://github.com/dalmia01/clock#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "node-sass": "^4.14.1"
+  }
+}
