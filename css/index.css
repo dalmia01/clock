@@ -41,18 +41,18 @@ main {
     padding: 0.5em 1em;
     font-size: 1.5em;
     border-bottom: 2px solid #faf2f2; }
-  main #alarm .all__alarms, main #stopwatch .all__alarms {
+  main #alarm .all__alarms, main #stopwatch .all__alarms, main #timer .all__alarms {
     display: grid;
     grid-template-columns: 80% 20%;
     padding: 5%;
     border-bottom: 2px solid #faf2f2;
     align-items: center; }
-  main #alarm .add__alarm, main #alarm .stop_watch, main #alarm .stop_watch_reset, main #alarm .stop_watch_play, main #alarm .stop_watch_flag, main #alarm .stop_watch_pause, main #stopwatch .add__alarm, main #stopwatch .stop_watch, main #stopwatch .stop_watch_reset, main #stopwatch .stop_watch_play, main #stopwatch .stop_watch_flag, main #stopwatch .stop_watch_pause {
+  main #alarm .add__alarm, main #alarm .timer_play, main #alarm .stop_watch, main #alarm .timer_watch, main #alarm .stop_watch_reset, main #alarm .stop_watch_play, main #alarm .stop_watch_flag, main #alarm .stop_watch_pause, main #stopwatch .add__alarm, main #stopwatch .timer_play, main #stopwatch .stop_watch, main #stopwatch .timer_watch, main #stopwatch .stop_watch_reset, main #stopwatch .stop_watch_play, main #stopwatch .stop_watch_flag, main #stopwatch .stop_watch_pause, main #timer .add__alarm, main #timer .timer_play, main #timer .stop_watch, main #timer .timer_watch, main #timer .stop_watch_reset, main #timer .stop_watch_play, main #timer .stop_watch_flag, main #timer .stop_watch_pause {
     position: absolute;
     top: 75%;
     left: 45%;
     cursor: pointer; }
-    main #alarm .add__alarm:before, main #alarm .stop_watch:before, main #alarm .stop_watch_reset:before, main #alarm .stop_watch_play:before, main #alarm .stop_watch_flag:before, main #alarm .stop_watch_pause:before, main #stopwatch .add__alarm:before, main #stopwatch .stop_watch:before, main #stopwatch .stop_watch_reset:before, main #stopwatch .stop_watch_play:before, main #stopwatch .stop_watch_flag:before, main #stopwatch .stop_watch_pause:before {
+    main #alarm .add__alarm:before, main #alarm .timer_play:before, main #alarm .stop_watch:before, main #alarm .timer_watch:before, main #alarm .stop_watch_reset:before, main #alarm .stop_watch_play:before, main #alarm .stop_watch_flag:before, main #alarm .stop_watch_pause:before, main #stopwatch .add__alarm:before, main #stopwatch .timer_play:before, main #stopwatch .stop_watch:before, main #stopwatch .timer_watch:before, main #stopwatch .stop_watch_reset:before, main #stopwatch .stop_watch_play:before, main #stopwatch .stop_watch_flag:before, main #stopwatch .stop_watch_pause:before, main #timer .add__alarm:before, main #timer .timer_play:before, main #timer .stop_watch:before, main #timer .timer_watch:before, main #timer .stop_watch_reset:before, main #timer .stop_watch_play:before, main #timer .stop_watch_flag:before, main #timer .stop_watch_pause:before {
       content: '+';
       display: flex;
       justify-content: center;
@@ -64,52 +64,55 @@ main {
       font-size: 30px;
       color: #fff;
       background: #f3e1e1; }
-  main #alarm .stop__flags, main #stopwatch .stop__flags {
+  main #alarm .timer_play:before, main #stopwatch .timer_play:before, main #timer .timer_play:before {
+    font-family: FontAwesome;
+    content: '\f0da'; }
+  main #alarm .stop__flags, main #stopwatch .stop__flags, main #timer .stop__flags {
     position: absolute;
     top: 55%;
     width: 70%;
     left: 20%;
     max-height: 85px;
     overflow: auto; }
-    main #alarm .stop__flags .single__flag, main #stopwatch .stop__flags .single__flag {
+    main #alarm .stop__flags .single__flag, main #stopwatch .stop__flags .single__flag, main #timer .stop__flags .single__flag {
       display: grid;
       grid-template-columns: 10% 45% 45%;
       justify-content: center;
       align-items: center;
       text-align: center;
       margin-bottom: 2%; }
-  main #alarm .stop_watch, main #stopwatch .stop_watch {
+  main #alarm .stop_watch, main #alarm .timer_watch, main #stopwatch .stop_watch, main #stopwatch .timer_watch, main #timer .stop_watch, main #timer .timer_watch {
     top: 16%;
     left: 30%; }
-    main #alarm .stop_watch:before, main #stopwatch .stop_watch:before {
+    main #alarm .stop_watch:before, main #alarm .timer_watch:before, main #stopwatch .stop_watch:before, main #stopwatch .timer_watch:before, main #timer .stop_watch:before, main #timer .timer_watch:before {
       color: #000;
       content: attr(data-content);
       background: #fff;
       width: 150px;
       height: 150px; }
-  main #alarm .stop_watch_reset, main #stopwatch .stop_watch_reset {
+  main #alarm .stop_watch_reset, main #stopwatch .stop_watch_reset, main #timer .stop_watch_reset {
     top: 76%;
     left: 30%; }
-    main #alarm .stop_watch_reset:before, main #stopwatch .stop_watch_reset:before {
+    main #alarm .stop_watch_reset:before, main #stopwatch .stop_watch_reset:before, main #timer .stop_watch_reset:before {
       content: '\27F3';
       font-size: 25px;
       color: #000;
       background: #fff;
       border: none; }
-  main #alarm .stop_watch_play:before, main #stopwatch .stop_watch_play:before {
+  main #alarm .stop_watch_play:before, main #stopwatch .stop_watch_play:before, main #timer .stop_watch_play:before {
     font-family: FontAwesome;
     content: '\f0da'; }
-  main #alarm .stop_watch_flag, main #stopwatch .stop_watch_flag {
+  main #alarm .stop_watch_flag, main #stopwatch .stop_watch_flag, main #timer .stop_watch_flag {
     top: 76%;
     left: 60%; }
-    main #alarm .stop_watch_flag:before, main #stopwatch .stop_watch_flag:before {
+    main #alarm .stop_watch_flag:before, main #stopwatch .stop_watch_flag:before, main #timer .stop_watch_flag:before {
       font-family: FontAwesome;
       content: '\f024';
       font-size: 20px;
       color: #000;
       background: #fff;
       border: none; }
-  main #alarm .stop_watch_pause:before, main #stopwatch .stop_watch_pause:before {
+  main #alarm .stop_watch_pause:before, main #stopwatch .stop_watch_pause:before, main #timer .stop_watch_pause:before {
     font-family: FontAwesome;
     content: '\f04c';
     font-size: 20px; }
@@ -240,3 +243,99 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%; }
+
+/****** bof::timer ******/
+.pin-login {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  font-family: sans-serif;
+  align-items: center; }
+
+.timer_pin_login {
+  display: flex;
+  width: 37%;
+  font-size: 2em;
+  justify-content: center; }
+
+.material-icons {
+  font-size: 10px; }
+
+.pin-login__text {
+  text-align: center;
+  letter-spacing: 0.2em;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: default;
+  text-decoration: none;
+  list-style-type: none; }
+
+.pin-login__text--error {
+  color: #901818;
+  background: #ffb3b3;
+  animation-name: loginError;
+  animation-duration: 0.1s;
+  animation-iteration-count: 2; }
+
+@keyframes loginError {
+  25% {
+    transform: translateX(-3px); }
+  75% {
+    transform: translateX(3px); } }
+
+@-moz-keyframes loginError {
+  25% {
+    transform: translateX(-3px); }
+  75% {
+    transform: translateX(3px); } }
+
+.pin-login__key {
+  width: 30px;
+  height: 30px;
+  margin: 5px 10px;
+  color: #363b5e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer; }
+
+.pin-login__key:active {
+  background: rgba(0, 0, 0, 0.25); }
+
+.activetime {
+  color: red; }
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d; }
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black; }
+
+.flip-card-back {
+  background-color: #fff;
+  color: white;
+  transform: rotateY(180deg); }
+
+/********  eof:timer ******/

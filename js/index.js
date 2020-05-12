@@ -259,3 +259,137 @@ stop_watch_reset.addEventListener('click', function (event) {
   stop_watch.dataset.content = `00:00:00`
 
 });
+
+
+
+var pin_hrs = document.getElementById('pin_hours');
+var pin_mins = document.getElementById('pin_mins');
+var pin_secs = document.getElementById('pin_secs');
+var pin_num = document.querySelectorAll('.pin_num');
+
+for(j = 0; j< pin_num.length;j++){
+  pin_num[j].addEventListener('click',function(){
+    for(i=0;i<pin_num.length;i++){
+      pin_num[i].className = pin_num[i].className.replace('activetime','');
+    }
+    this.className = this.className + ' activetime';
+  });
+}
+
+
+
+
+var numPad =  document.querySelector(".pin-login__numpad");
+
+
+function  _generatePad() {
+        const padLayout = [
+            "1", "2", "3",
+            "4", "5", "6",
+            "7", "8", "9",
+            "a", "0", "backspace"
+        ];
+
+        padLayout.forEach(key => {
+            const insertBreak = key.search(/[369]/) !== -1;
+            const keyEl = document.createElement("div");
+
+            keyEl.classList.add("pin-login__key");
+            keyEl.classList.toggle("material-icons", isNaN(key));
+            keyEl.textContent = key;
+            if(key == 'a')
+            keyEl.style.visibility = 'hidden';
+
+            keyEl.addEventListener("click", () => { _handleKeyPress(key) });
+            numPad.appendChild(keyEl);
+
+            if (insertBreak) {
+                numPad.appendChild(document.createElement("br"));
+            }
+        });
+    }
+
+    var numkey = '';
+    var hrkey = '',newvalue = '';
+
+    function _handleKeyPress(key){
+
+      if(document.getElementById('pin_secs').className.includes('activetime')){
+
+        var getValue = getSecMin(key);
+
+        hrkey = '';
+
+        var value = parseInt(document.getElementById('pin_mins').textContent) + parseInt(getValue.minutes);
+        value = value < 10 ? '0'+value : value;
+
+        document.querySelector('.pin_seconds').textContent = getValue.seconds;
+        document.querySelector('.pin_minutes').textContent = value;
+
+      }else if(document.getElementById('pin_mins').className.includes('activetime')){
+
+        var getValue = getSecMin(key);
+
+        hrkey = '';
+
+        var value = parseInt(document.getElementById('pin_hours').textContent) + parseInt(getValue.minutes);
+        value = value < 10 ? '0'+value : value;
+
+        document.querySelector('.pin_minutes').textContent = getValue.seconds;
+        document.querySelector('.pin_hours').textContent = value;
+
+      }else{
+
+
+
+        if(key == 'backspace'){
+          newvalue = document.querySelector('.pin_hours').textContent;
+          if(newvalue.length>2){
+            newvalue = newvalue.substr(0,newvalue.length -1 );
+            document.querySelector('.pin_hours').textContent = newvalue;
+            hrkey= newvalue;
+          }
+
+
+        }else{
+          hrkey += key;
+
+          hrkey = parseInt(hrkey) < 10 ? '0'+parseInt(hrkey) : parseInt(hrkey);
+
+          document.querySelector('.pin_hours').textContent = hrkey;
+        }
+
+      }
+
+
+    }
+
+    function getSecMin(key){
+      if(numkey.length > 1)
+      numkey = '';
+
+      numkey += key;
+
+      seconds = numkey % 60;
+      minutes = parseInt(numkey / 60);
+
+      seconds = seconds < 10 ? '0'+seconds : seconds;
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+
+      return {
+        seconds : seconds,
+        minutes: minutes
+      }
+    }
+
+    _generatePad();
+
+
+    var timer_play = document.querySelector('.timer_play');
+    var flip_card_inner = document.querySelector('.flip-card-inner');
+
+    timer_play.addEventListener('click', function (event) {
+      
+      flip_card_inner.style.transform = 'rotateY(180deg)';
+
+    });

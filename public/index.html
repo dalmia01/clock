@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="../css/index.css" />
   <title>Clock</title>
@@ -24,8 +25,39 @@
     </section>
 
     <section id="timer" style="display:none">
+    <div class='flip-card'>
+      <div class='flip-card-inner'>
 
-  timer
+        <div class="pin-login" id="mainPinLogin">
+            <div class='timer_pin_login' style='font-size:2.5em;'>
+              <li  class="pin-login__text pin_num pin_hours" id='pin_hours'>00</li>
+              <li class="pin-login__text">:</li>
+              <li   class="pin-login__text pin_num pin_minutes" id='pin_mins'>00</li>
+              <li class="pin-login__text">:</li>
+              <li   class="pin-login__text pin_num pin_seconds activetime" id='pin_secs'>00</li>
+            </div>
+            <div class='timer_pin_login' style='font-size:1.4em;margin:2.5%;'>
+              <li  class="pin-login__text">Hrs</li>
+              <li class="pin-login__text">:</li>
+              <li   class="pin-login__text">Mins</li>
+              <li class="pin-login__text">:</li>
+              <li   class="pin-login__text">Secs</li>
+            </div>
+            <div class="pin-login__numpad"></div>
+        </div>
+
+        <div class="flip-card-back">
+        <span class="timer_watch" id="start_timer" data-content='00:00:00'></span>
+      </div>
+
+
+      </div>
+
+    </div>
+
+
+
+      <span class="timer_play" id="timer_play" ></span>
 
     </section>
 
