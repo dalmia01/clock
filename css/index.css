@@ -24,7 +24,7 @@ body, html {
   font-family: monospace; }
 
 body {
-  background: #faf2f2;
+  background: rgba(255, 127, 80, 0.8);
   height: 100%;
   display: grid;
   padding-top: 50px;
@@ -41,18 +41,21 @@ main {
     padding: 0.5em 1em;
     font-size: 1.5em;
     border-bottom: 2px solid #faf2f2; }
-  main #alarm .all__alarms, main #stopwatch .all__alarms, main #timer .all__alarms {
+  main #clock {
+    max-height: 400px;
+    overflow: auto; }
+  main #alarm .all__alarms, main #clock .all__alarms, main #stopwatch .all__alarms, main #timer .all__alarms {
     display: grid;
     grid-template-columns: 80% 20%;
     padding: 5%;
     border-bottom: 2px solid #faf2f2;
     align-items: center; }
-  main #alarm .add__alarm, main #alarm .timer_play, main #alarm .stop_watch, main #alarm .timer_watch, main #alarm .stop_watch_reset, main #alarm .stop_watch_play, main #alarm .stop_watch_flag, main #alarm .stop_watch_pause, main #stopwatch .add__alarm, main #stopwatch .timer_play, main #stopwatch .stop_watch, main #stopwatch .timer_watch, main #stopwatch .stop_watch_reset, main #stopwatch .stop_watch_play, main #stopwatch .stop_watch_flag, main #stopwatch .stop_watch_pause, main #timer .add__alarm, main #timer .timer_play, main #timer .stop_watch, main #timer .timer_watch, main #timer .stop_watch_reset, main #timer .stop_watch_play, main #timer .stop_watch_flag, main #timer .stop_watch_pause {
+  main #alarm .add__alarm, main #alarm .new_city_timezone, main #alarm .timer_play, main #alarm .timer_play_pause, main #alarm .timer_pause, main #alarm .timer_delete, main #alarm .stop_watch, main #alarm .timer_watch, main #alarm .stop_watch_reset, main #alarm .stop_watch_play, main #alarm .stop_watch_flag, main #alarm .stop_watch_pause, main #clock .add__alarm, main #clock .new_city_timezone, main #clock .timer_play, main #clock .timer_play_pause, main #clock .timer_pause, main #clock .timer_delete, main #clock .stop_watch, main #clock .timer_watch, main #clock .stop_watch_reset, main #clock .stop_watch_play, main #clock .stop_watch_flag, main #clock .stop_watch_pause, main #stopwatch .add__alarm, main #stopwatch .new_city_timezone, main #stopwatch .timer_play, main #stopwatch .timer_play_pause, main #stopwatch .timer_pause, main #stopwatch .timer_delete, main #stopwatch .stop_watch, main #stopwatch .timer_watch, main #stopwatch .stop_watch_reset, main #stopwatch .stop_watch_play, main #stopwatch .stop_watch_flag, main #stopwatch .stop_watch_pause, main #timer .add__alarm, main #timer .new_city_timezone, main #timer .timer_play, main #timer .timer_play_pause, main #timer .timer_pause, main #timer .timer_delete, main #timer .stop_watch, main #timer .timer_watch, main #timer .stop_watch_reset, main #timer .stop_watch_play, main #timer .stop_watch_flag, main #timer .stop_watch_pause {
     position: absolute;
     top: 75%;
     left: 45%;
     cursor: pointer; }
-    main #alarm .add__alarm:before, main #alarm .timer_play:before, main #alarm .stop_watch:before, main #alarm .timer_watch:before, main #alarm .stop_watch_reset:before, main #alarm .stop_watch_play:before, main #alarm .stop_watch_flag:before, main #alarm .stop_watch_pause:before, main #stopwatch .add__alarm:before, main #stopwatch .timer_play:before, main #stopwatch .stop_watch:before, main #stopwatch .timer_watch:before, main #stopwatch .stop_watch_reset:before, main #stopwatch .stop_watch_play:before, main #stopwatch .stop_watch_flag:before, main #stopwatch .stop_watch_pause:before, main #timer .add__alarm:before, main #timer .timer_play:before, main #timer .stop_watch:before, main #timer .timer_watch:before, main #timer .stop_watch_reset:before, main #timer .stop_watch_play:before, main #timer .stop_watch_flag:before, main #timer .stop_watch_pause:before {
+    main #alarm .add__alarm:before, main #alarm .new_city_timezone:before, main #alarm .timer_play:before, main #alarm .timer_play_pause:before, main #alarm .timer_pause:before, main #alarm .timer_delete:before, main #alarm .stop_watch:before, main #alarm .timer_watch:before, main #alarm .stop_watch_reset:before, main #alarm .stop_watch_play:before, main #alarm .stop_watch_flag:before, main #alarm .stop_watch_pause:before, main #clock .add__alarm:before, main #clock .new_city_timezone:before, main #clock .timer_play:before, main #clock .timer_play_pause:before, main #clock .timer_pause:before, main #clock .timer_delete:before, main #clock .stop_watch:before, main #clock .timer_watch:before, main #clock .stop_watch_reset:before, main #clock .stop_watch_play:before, main #clock .stop_watch_flag:before, main #clock .stop_watch_pause:before, main #stopwatch .add__alarm:before, main #stopwatch .new_city_timezone:before, main #stopwatch .timer_play:before, main #stopwatch .timer_play_pause:before, main #stopwatch .timer_pause:before, main #stopwatch .timer_delete:before, main #stopwatch .stop_watch:before, main #stopwatch .timer_watch:before, main #stopwatch .stop_watch_reset:before, main #stopwatch .stop_watch_play:before, main #stopwatch .stop_watch_flag:before, main #stopwatch .stop_watch_pause:before, main #timer .add__alarm:before, main #timer .new_city_timezone:before, main #timer .timer_play:before, main #timer .timer_play_pause:before, main #timer .timer_pause:before, main #timer .timer_delete:before, main #timer .stop_watch:before, main #timer .timer_watch:before, main #timer .stop_watch_reset:before, main #timer .stop_watch_play:before, main #timer .stop_watch_flag:before, main #timer .stop_watch_pause:before {
       content: '+';
       display: flex;
       justify-content: center;
@@ -60,92 +63,128 @@ main {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border: 2px solid #f3e1e1;
+      border: 2px solid rgba(255, 127, 80, 0.8);
       font-size: 30px;
       color: #fff;
-      background: #f3e1e1; }
-  main #alarm .timer_play:before, main #stopwatch .timer_play:before, main #timer .timer_play:before {
+      background: rgba(255, 127, 80, 0.8); }
+  main #alarm .new_city_timezone:before, main #clock .new_city_timezone:before, main #stopwatch .new_city_timezone:before, main #timer .new_city_timezone:before {
+    font-family: FontAwesome;
+    content: '\f2dc';
+    font-size: 20px; }
+  main #alarm .timer_play:before, main #alarm .timer_play_pause:before, main #clock .timer_play:before, main #clock .timer_play_pause:before, main #stopwatch .timer_play:before, main #stopwatch .timer_play_pause:before, main #timer .timer_play:before, main #timer .timer_play_pause:before {
     font-family: FontAwesome;
     content: '\f0da'; }
-  main #alarm .stop__flags, main #stopwatch .stop__flags, main #timer .stop__flags {
+  main #alarm .timer_pause:before, main #clock .timer_pause:before, main #stopwatch .timer_pause:before, main #timer .timer_pause:before {
+    font-family: FontAwesome;
+    content: '\f04c';
+    font-size: 20px; }
+  main #alarm .timer_delete, main #clock .timer_delete, main #stopwatch .timer_delete, main #timer .timer_delete {
+    left: 35%; }
+    main #alarm .timer_delete:before, main #clock .timer_delete:before, main #stopwatch .timer_delete:before, main #timer .timer_delete:before {
+      font-family: FontAwesome;
+      content: '\f014';
+      background: #fff;
+      border: none;
+      color: #000;
+      font-size: 20px; }
+  main #alarm .stop__flags, main #clock .stop__flags, main #stopwatch .stop__flags, main #timer .stop__flags {
     position: absolute;
     top: 55%;
     width: 70%;
     left: 20%;
     max-height: 85px;
     overflow: auto; }
-    main #alarm .stop__flags .single__flag, main #stopwatch .stop__flags .single__flag, main #timer .stop__flags .single__flag {
+    main #alarm .stop__flags .single__flag, main #clock .stop__flags .single__flag, main #stopwatch .stop__flags .single__flag, main #timer .stop__flags .single__flag {
       display: grid;
       grid-template-columns: 10% 45% 45%;
       justify-content: center;
       align-items: center;
       text-align: center;
       margin-bottom: 2%; }
-  main #alarm .stop_watch, main #alarm .timer_watch, main #stopwatch .stop_watch, main #stopwatch .timer_watch, main #timer .stop_watch, main #timer .timer_watch {
+  main #alarm .stop_watch, main #alarm .timer_watch, main #clock .stop_watch, main #clock .timer_watch, main #stopwatch .stop_watch, main #stopwatch .timer_watch, main #timer .stop_watch, main #timer .timer_watch {
     top: 16%;
     left: 30%; }
-    main #alarm .stop_watch:before, main #alarm .timer_watch:before, main #stopwatch .stop_watch:before, main #stopwatch .timer_watch:before, main #timer .stop_watch:before, main #timer .timer_watch:before {
+    main #alarm .stop_watch:before, main #alarm .timer_watch:before, main #clock .stop_watch:before, main #clock .timer_watch:before, main #stopwatch .stop_watch:before, main #stopwatch .timer_watch:before, main #timer .stop_watch:before, main #timer .timer_watch:before {
       color: #000;
       content: attr(data-content);
       background: #fff;
       width: 150px;
       height: 150px; }
-  main #alarm .stop_watch_reset, main #stopwatch .stop_watch_reset, main #timer .stop_watch_reset {
+  main #alarm .stop_watch_reset, main #clock .stop_watch_reset, main #stopwatch .stop_watch_reset, main #timer .stop_watch_reset {
     top: 76%;
     left: 30%; }
-    main #alarm .stop_watch_reset:before, main #stopwatch .stop_watch_reset:before, main #timer .stop_watch_reset:before {
+    main #alarm .stop_watch_reset:before, main #clock .stop_watch_reset:before, main #stopwatch .stop_watch_reset:before, main #timer .stop_watch_reset:before {
       content: '\27F3';
       font-size: 25px;
       color: #000;
       background: #fff;
       border: none; }
-  main #alarm .stop_watch_play:before, main #stopwatch .stop_watch_play:before, main #timer .stop_watch_play:before {
+  main #alarm .stop_watch_play:before, main #clock .stop_watch_play:before, main #stopwatch .stop_watch_play:before, main #timer .stop_watch_play:before {
     font-family: FontAwesome;
     content: '\f0da'; }
-  main #alarm .stop_watch_flag, main #stopwatch .stop_watch_flag, main #timer .stop_watch_flag {
+  main #alarm .stop_watch_flag, main #clock .stop_watch_flag, main #stopwatch .stop_watch_flag, main #timer .stop_watch_flag {
     top: 76%;
     left: 60%; }
-    main #alarm .stop_watch_flag:before, main #stopwatch .stop_watch_flag:before, main #timer .stop_watch_flag:before {
+    main #alarm .stop_watch_flag:before, main #clock .stop_watch_flag:before, main #stopwatch .stop_watch_flag:before, main #timer .stop_watch_flag:before {
       font-family: FontAwesome;
       content: '\f024';
       font-size: 20px;
       color: #000;
       background: #fff;
       border: none; }
-  main #alarm .stop_watch_pause:before, main #stopwatch .stop_watch_pause:before, main #timer .stop_watch_pause:before {
+  main #alarm .stop_watch_pause:before, main #clock .stop_watch_pause:before, main #stopwatch .stop_watch_pause:before, main #timer .stop_watch_pause:before {
     font-family: FontAwesome;
     content: '\f04c';
     font-size: 20px; }
-  main#clock__content, main#set__alarm {
+  main#clock__content, main#set__alarm, main#timezone_cities {
     width: 400px;
     height: 500px;
     background: #fff;
     border-radius: 15px; }
-  main#set__alarm {
+  main#set__alarm, main#timezone_cities {
     display: none; }
-    main#set__alarm header {
+    main#set__alarm header, main#timezone_cities header {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       align-items: center;
       /* justify-content: center; */
       text-align: center; }
-    main#set__alarm #setting_alarm {
+    main#set__alarm .all__cities, main#timezone_cities .all__cities {
+      max-height: 400px;
+      overflow: auto; }
+      main#set__alarm .all__cities .time__city, main#timezone_cities .all__cities .time__city {
+        display: grid;
+        color: black;
+        padding: 2%; }
+        main#set__alarm .all__cities .time__city > label, main#timezone_cities .all__cities .time__city > label {
+          display: grid;
+          grid-template-columns: 70% 30%;
+          cursor: pointer; }
+        main#set__alarm .all__cities .time__city .time_city_check, main#timezone_cities .all__cities .time__city .time_city_check {
+          text-align: right; }
+    main#set__alarm #setting_alarm, main#timezone_cities #setting_alarm {
       display: grid;
       grid-template-columns: 50% 50%; }
-      main#set__alarm #setting_alarm > div {
+      main#set__alarm #setting_alarm > div, main#timezone_cities #setting_alarm > div {
         padding: 5%; }
-      main#set__alarm #setting_alarm .set_alarm_title {
+      main#set__alarm #setting_alarm .set_alarm_title, main#timezone_cities #setting_alarm .set_alarm_title {
         grid-column: 1/span 2;
         width: 100%;
         display: grid; }
-        main#set__alarm #setting_alarm .set_alarm_title input[type="checkbox"] {
+        main#set__alarm #setting_alarm .set_alarm_title input[type="checkbox"], main#timezone_cities #setting_alarm .set_alarm_title input[type="checkbox"] {
           display: none; }
-        main#set__alarm #setting_alarm .set_alarm_title input:checked + .sun:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .mon:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .tue:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .wed:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .thu:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .fri:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .sat:before {
-          background: #f3e1e1;
+        main#set__alarm #setting_alarm .set_alarm_title input:checked + .sun:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .mon:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .tue:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .wed:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .thu:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .fri:before, main#set__alarm #setting_alarm .set_alarm_title input:checked + .sat:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .sun:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .mon:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .tue:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .wed:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .thu:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .fri:before, main#timezone_cities #setting_alarm .set_alarm_title input:checked + .sat:before {
+          background: rgba(255, 127, 80, 0.8);
           color: #fff; }
-        main#set__alarm #setting_alarm .set_alarm_title .sun, main#set__alarm #setting_alarm .set_alarm_title .mon, main#set__alarm #setting_alarm .set_alarm_title .tue, main#set__alarm #setting_alarm .set_alarm_title .wed, main#set__alarm #setting_alarm .set_alarm_title .thu, main#set__alarm #setting_alarm .set_alarm_title .fri, main#set__alarm #setting_alarm .set_alarm_title .sat {
+        main#set__alarm #setting_alarm .set_alarm_title .set_alarm_days, main#timezone_cities #setting_alarm .set_alarm_title .set_alarm_days {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          margin-top: 5%; }
+          main#set__alarm #setting_alarm .set_alarm_title .set_alarm_days label, main#timezone_cities #setting_alarm .set_alarm_title .set_alarm_days label {
+            margin: 0 auto; }
+        main#set__alarm #setting_alarm .set_alarm_title .sun, main#set__alarm #setting_alarm .set_alarm_title .mon, main#set__alarm #setting_alarm .set_alarm_title .tue, main#set__alarm #setting_alarm .set_alarm_title .wed, main#set__alarm #setting_alarm .set_alarm_title .thu, main#set__alarm #setting_alarm .set_alarm_title .fri, main#set__alarm #setting_alarm .set_alarm_title .sat, main#timezone_cities #setting_alarm .set_alarm_title .sun, main#timezone_cities #setting_alarm .set_alarm_title .mon, main#timezone_cities #setting_alarm .set_alarm_title .tue, main#timezone_cities #setting_alarm .set_alarm_title .wed, main#timezone_cities #setting_alarm .set_alarm_title .thu, main#timezone_cities #setting_alarm .set_alarm_title .fri, main#timezone_cities #setting_alarm .set_alarm_title .sat {
           cursor: pointer; }
-          main#set__alarm #setting_alarm .set_alarm_title .sun:before, main#set__alarm #setting_alarm .set_alarm_title .mon:before, main#set__alarm #setting_alarm .set_alarm_title .tue:before, main#set__alarm #setting_alarm .set_alarm_title .wed:before, main#set__alarm #setting_alarm .set_alarm_title .thu:before, main#set__alarm #setting_alarm .set_alarm_title .fri:before, main#set__alarm #setting_alarm .set_alarm_title .sat:before {
+          main#set__alarm #setting_alarm .set_alarm_title .sun:before, main#set__alarm #setting_alarm .set_alarm_title .mon:before, main#set__alarm #setting_alarm .set_alarm_title .tue:before, main#set__alarm #setting_alarm .set_alarm_title .wed:before, main#set__alarm #setting_alarm .set_alarm_title .thu:before, main#set__alarm #setting_alarm .set_alarm_title .fri:before, main#set__alarm #setting_alarm .set_alarm_title .sat:before, main#timezone_cities #setting_alarm .set_alarm_title .sun:before, main#timezone_cities #setting_alarm .set_alarm_title .mon:before, main#timezone_cities #setting_alarm .set_alarm_title .tue:before, main#timezone_cities #setting_alarm .set_alarm_title .wed:before, main#timezone_cities #setting_alarm .set_alarm_title .thu:before, main#timezone_cities #setting_alarm .set_alarm_title .fri:before, main#timezone_cities #setting_alarm .set_alarm_title .sat:before {
             content: 'S';
             display: flex;
             flex-direction: row;
@@ -156,19 +195,19 @@ main {
             border-radius: 50%;
             font-size: 15px;
             color: #000; }
-        main#set__alarm #setting_alarm .set_alarm_title .mon:before {
+        main#set__alarm #setting_alarm .set_alarm_title .mon:before, main#timezone_cities #setting_alarm .set_alarm_title .mon:before {
           content: 'M'; }
-        main#set__alarm #setting_alarm .set_alarm_title .tue:before {
+        main#set__alarm #setting_alarm .set_alarm_title .tue:before, main#timezone_cities #setting_alarm .set_alarm_title .tue:before {
           content: 'T'; }
-        main#set__alarm #setting_alarm .set_alarm_title .wed:before {
+        main#set__alarm #setting_alarm .set_alarm_title .wed:before, main#timezone_cities #setting_alarm .set_alarm_title .wed:before {
           content: 'W'; }
-        main#set__alarm #setting_alarm .set_alarm_title .thu:before {
+        main#set__alarm #setting_alarm .set_alarm_title .thu:before, main#timezone_cities #setting_alarm .set_alarm_title .thu:before {
           content: 'T'; }
-        main#set__alarm #setting_alarm .set_alarm_title .fri:before {
+        main#set__alarm #setting_alarm .set_alarm_title .fri:before, main#timezone_cities #setting_alarm .set_alarm_title .fri:before {
           content: 'F'; }
-        main#set__alarm #setting_alarm .set_alarm_title .sat:before {
+        main#set__alarm #setting_alarm .set_alarm_title .sat:before, main#timezone_cities #setting_alarm .set_alarm_title .sat:before {
           content: 'S'; }
-      main#set__alarm #setting_alarm .set_hour, main#set__alarm #setting_alarm .set_minutes {
+      main#set__alarm #setting_alarm .set_hour, main#set__alarm #setting_alarm .set_minutes, main#timezone_cities #setting_alarm .set_hour, main#timezone_cities #setting_alarm .set_minutes {
         display: grid;
         padding: 10%; }
   main #clock__nav__items {
@@ -187,10 +226,10 @@ main {
         align-self: center;
         text-align: center;
         border-top: 2px solid #faf2f2;
-        color: #7d5a5a;
-        cursor: pointer; }
+        color: rgba(125, 90, 90, 0.6);
+        cursor: pointer;
+        padding-bottom: 4%; }
         main #clock__nav__items ul li i {
-          font-size: 1.5em;
           padding: 0.5em; }
 
 .switch {
@@ -227,10 +266,10 @@ main {
   transition: .4s; }
 
 input:checked + .slider {
-  background-color: #f1d1d1; }
+  background-color: rgba(255, 127, 80, 0.8); }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #f1d1d1; }
+  box-shadow: 0 0 1px rgba(255, 127, 80, 0.8); }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
@@ -311,7 +350,7 @@ input:checked + .slider:before {
   background: rgba(0, 0, 0, 0.25); }
 
 .activetime {
-  color: red; }
+  color: rgba(255, 127, 80, 0.8); }
 
 .flip-card-inner {
   position: relative;
@@ -339,3 +378,172 @@ input:checked + .slider:before {
   transform: rotateY(180deg); }
 
 /********  eof:timer ******/
+/*********8 bof: world clock **************/
+.clock {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: cornsilk;
+  margin: 10px auto 0px auto;
+  position: relative;
+  border: 2px solid cornsilk; }
+
+.center {
+  background-color: #000;
+  position: absolute;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 20; }
+
+.hourHand {
+  width: 7px;
+  height: 50px;
+  background-color: #000;
+  transform-origin: bottom center;
+  border-radius: 4px;
+  position: absolute;
+  top: 27px;
+  left: 75px;
+  z-index: 10;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  transform: rotate(360deg); }
+
+.minuteHand {
+  width: 5px;
+  height: 75px;
+  background-color: #000;
+  transform-origin: bottom center;
+  border-radius: 4px;
+  position: absolute;
+  top: 3px;
+  left: 73.5px;
+  z-index: 9;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  transform: rotate(90deg); }
+
+.secondHand {
+  width: 2px;
+  height: 75px;
+  background-color: coral;
+  transform-origin: bottom center;
+  border-radius: 4px;
+  position: absolute;
+  top: 4px;
+  left: 77px;
+  transition: all 0.06s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  z-index: 8;
+  transform: rotate(360deg); }
+
+.time {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  border: 1px solid #fff8dc;
+  background-color: #fff;
+  padding: 5px;
+  display: block;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  min-width: 70px; }
+
+.time small {
+  color: coral;
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); }
+
+.clock ul {
+  list-style: none;
+  padding: 0; }
+
+.clock ul li {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 10px;
+  color: red; }
+
+.clock ul li:nth-child(1) {
+  right: 22%;
+  top: 6.5%; }
+
+.clock ul li:nth-child(2) {
+  right: 6%;
+  top: 25%; }
+
+.clock ul li:nth-child(3) {
+  right: 1%;
+  top: calc(50% - 10px);
+  color: #000;
+  font-size: 20px;
+  font-weight: bold; }
+
+.clock ul li:nth-child(4) {
+  right: 6%;
+  top: 69%; }
+
+.clock ul li:nth-child(5) {
+  right: 22%;
+  top: 84%; }
+
+.clock ul li:nth-child(6) {
+  right: calc(50% - 10px);
+  top: calc(99% - 20px);
+  color: #000;
+  font-size: 20px;
+  font-weight: bold; }
+
+.clock ul li:nth-child(7) {
+  left: 22%;
+  top: 84%; }
+
+.clock ul li:nth-child(8) {
+  left: 6%;
+  top: 69%; }
+
+.clock ul li:nth-child(9) {
+  left: 1%;
+  top: calc(50% - 10px);
+  color: #000;
+  font-size: 20px;
+  font-weight: bold; }
+
+.clock ul li:nth-child(10) {
+  left: 6%;
+  top: 25%; }
+
+.clock ul li:nth-child(11) {
+  left: 22%;
+  top: 6.5%; }
+
+.clock ul li:nth-child(12) {
+  right: calc(50% - 10px);
+  top: 1%;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold; }
+
+.timezone {
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+  grid-row-gap: 5px; }
+
+.specific_timezone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5% 5% 2% 5%;
+  border-bottom: 1px solid rgba(255, 127, 80, 0.8); }
+  .specific_timezone .spec_zone_data {
+    display: flex;
+    flex-direction: column; }
+
+/********** eof: world clock *************/

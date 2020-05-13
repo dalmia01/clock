@@ -14,13 +14,59 @@
     <header>Clock</header>
     <section id="alarm">
 
+
+
       <span class="add__alarm" id="add__alarm"></span>
 
     </section>
 
     <section id="clock" style="display:none">
 
-  clock
+      <div class="clock">
+        <div class="hourHand"></div>
+        <div class="minuteHand"></div>
+        <div class="secondHand"></div>
+        <div class="center"></div>
+        <div class="time"></div>
+        <ul>
+            <li><span>1</span></li>
+            <li><span>2</span></li>
+            <li><span>3</span></li>
+            <li><span>4</span></li>
+            <li><span>5</span></li>
+            <li><span>6</span></li>
+            <li><span>7</span></li>
+            <li><span>8</span></li>
+            <li><span>9</span></li>
+            <li><span>10</span></li>
+            <li><span>11</span></li>
+            <li><span>12</span></li>
+        </ul>
+    </div>
+
+
+    <div class='timezone'>
+      <div style='font-size:1em'>Current TimeZone</div>
+      <div class='timezone_time'></div>
+    </div>
+
+    <div class='different_timezones'>
+
+
+
+
+
+
+
+    </div>
+
+    <span class="new_city_timezone" id="new_city_timezone"></span>
+
+
+
+
+
+
 
     </section>
 
@@ -55,9 +101,12 @@
 
     </div>
 
+      <span class="timer_delete" id="timer_delete" style='display:none'></span>
+      <span class="timer_pause" id="timer_pause" style='display:none'></span>
+      <span class="timer_play" id="timer_play" style='display:none'></span>
+      <span class="timer_play_pause" id="timer_play_pause" style='display:none'></span>
+      <!-- <span class="stop_watch_reset" id="start_stopwatch_reset" style="display:none"></span> -->
 
-
-      <span class="timer_play" id="timer_play" ></span>
 
     </section>
 
@@ -82,7 +131,7 @@
 
     <nav id="clock__nav__items">
       <ul>
-        <li class="nav_clock_items alarm" style="color:#63b7af"><i class="fa fa-bell-o clock_items"></i><span>Alarm<span></li>
+        <li class="nav_clock_items alarm" style="color:#d63447"><i class="fa fa-bell-o clock_items"></i><span>Alarm<span></li>
         <li class="nav_clock_items worldclock"><i class="fa fa-clock-o clock_items"></i><span>World Clock<span></li>
         <li class="nav_clock_items timer"><i class="fa fa-hourglass-o clock_items"></i><span>Timer<span></li>
         <li class="nav_clock_items stopwatch"><i class="fa fa-stop-circle-o clock_items"></i><span>Stopwatch<span></li>
@@ -152,6 +201,43 @@
           <option value="20">20</option>
           <option value="21">21</option>
           <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">11</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
         </select>
       </div>
 
@@ -168,7 +254,7 @@
       <div class="set_alarm_title">
         <label>Repeat</label>
 
-        <div style='display: grid;grid-template-columns: repeat(7,1fr);margin-top:5%;'>
+        <div class='set_alarm_days' style=''>
         <label><input type="checkbox" class='repeat'  name="repeat" value="Sunday" checked/><span class="sun" id="sun"></span></label>
         <label><input type="checkbox" class='repeat' name="repeat" value="Monday"/><span class="mon" id="mon"></span></label>
         <label><input type="checkbox" class='repeat' name="repeat" value="Tuesday"/><span class="tue" id="tue"></span></label>
@@ -183,6 +269,132 @@
 
 
     </section>
+
+  </main>
+
+  <main id="timezone_cities" style='display:none'>
+
+    <header>
+      <i class="fa fa-chevron-left set__clock__back"></i>
+      <span>Cities</span>
+      <i class="fa fa-check set__clock__done"></i>
+    </header>
+
+    <div class='all__cities'>
+
+      <div style="width:65%;margin:0 auto">
+
+      <div class='time__city'>
+        <label><span>New Delhi</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Kolkata' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>New York</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city'  value='America/New_York' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Toronto</span>
+        <span class='time_city_check'><input type="checkbox" name="city"  class='city' value='America/Toronto' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Tokyo</span>
+        <span class='time_city_check'><input type="checkbox" name="city"  class='city' value='Asia/Tokyo' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>London</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city'  value='Europe/London' /></span></label>
+      </div>
+
+
+      <div class='time__city'>
+        <label><span>London</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Europe/London' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Paris</span>
+      <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Europe/Paris' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Dubai</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Dubai' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Singapore</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Singapore' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Bangkok</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Bangkok' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Hong Kong</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Hong_Kong' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Moscow</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Europe/Moscow' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Los Angeles</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='America/Los_Angeles' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Rome</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Europe/Rome' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Madrid</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Europe/Madrid' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Chicago</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='America/Chicago' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Beijing</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Shanghai' /></span></label>
+      </div>
+
+      <div class='time__city'>
+      <label><span>Sydney</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Australia/Sydney' /></span></label>
+      </div>
+
+      <div class='time__city'>
+        <label><span>Johannesburg</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Africa/Johannesburg' /></span></label>
+      </div>
+      <div class='time__city'>
+        <label><span>Kathmandu</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Asia/Kathmandu' /></span></label>
+      </div>
+      <div class='time__city'>
+        <label><span>Auckland</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Pacific/Auckland' /></span></label>
+      </div>
+      <div class='time__city'>
+        <label><span>Fiji</span>
+        <span class='time_city_check'><input type="checkbox" name="city" class='city' value='Pacific/Fiji' /></span></label>
+      </div>
+
+    </div>
+
+    </div>
 
   </main>
 

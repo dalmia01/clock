@@ -10,16 +10,37 @@ document.querySelector('.set__alarm__back').addEventListener('click',function(){
   document.querySelector('#set__alarm').style.display = 'none';
 });
 
+document.getElementById('new_city_timezone').addEventListener('click',function(){
+  document.querySelector('#clock__content').style.display = 'none';
+  document.querySelector('#timezone_cities').style.display = 'block';
+});
+
+document.querySelector('.set__clock__back').addEventListener('click',function(){
+  document.querySelector('#clock__content').style.display = 'block';
+  document.querySelector('#timezone_cities').style.display = 'none';
+});
+
+document.querySelector('.set__clock__done').addEventListener('click',function(){
+  document.querySelector('#clock__content').style.display = 'block';
+  document.querySelector('#timezone_cities').style.display = 'none';
+
+  differentTineZoneFunc();
+
+  //console.log(citesArray);
+
+
+});
+
 var nav_clock_items = document.getElementsByClassName('nav_clock_items');
 
 for(var i = 0; i < nav_clock_items.length; i++) {
   nav_clock_items[i].addEventListener('click', function(e) {
 
     for(var i = 0; i < nav_clock_items.length; i++) {
-      nav_clock_items[i].style.color = '#7d5a5a';
+      nav_clock_items[i].style.color = 'rgba(125, 90, 90,0.6)';
     }
 
-    e.currentTarget.style.color = '#63b7af';
+    e.currentTarget.style.color = '#d63447';
 
     if(e.currentTarget.className.includes('stopwatch')){
       document.getElementById('stopwatch').style.display = 'block';
@@ -312,9 +333,18 @@ function  _generatePad() {
     var numkey = '';
     var hrkey = '',newvalue = '';
 
+    var timer_play = document.querySelector('.timer_play');
+    var timer_play_pause = document.querySelector('.timer_play_pause');
+    var timer_pause = document.querySelector('.timer_pause');
+    var timer_delete = document.querySelector('.timer_delete');
+    var flip_card_inner = document.querySelector('.flip-card-inner');
+    var start_timer = document.querySelector('#start_timer');
+    var startTimer;
+
+
     function _handleKeyPress(key){
 
-      if(document.getElementById('pin_secs').className.includes('activetime')){
+      if(document.getElementById('pin_secs').className.includes('activetime') && key!= 'backspace'){
 
         var getValue = getSecMin(key);
 
@@ -326,7 +356,7 @@ function  _generatePad() {
         document.querySelector('.pin_seconds').textContent = getValue.seconds;
         document.querySelector('.pin_minutes').textContent = value;
 
-      }else if(document.getElementById('pin_mins').className.includes('activetime')){
+      }else if(document.getElementById('pin_mins').className.includes('activetime') && key!= 'backspace'){
 
         var getValue = getSecMin(key);
 
@@ -361,6 +391,18 @@ function  _generatePad() {
 
       }
 
+      if(document.querySelector('.pin_hours').textContent == '00' && document.querySelector('.pin_minutes').textContent == '00' && document.querySelector('.pin_seconds').textContent == '00'){
+        timer_play.style.display = 'none';
+
+      }else{
+
+        timer_play.style.display = 'block';
+
+        var timerhours = parseInt(document.querySelector('.pin_hours').textContent);
+        var timermins = parseInt(document.querySelector('.pin_minutes').textContent);
+        var timersecs = parseInt(document.querySelector('.pin_seconds').textContent);
+      }
+
 
     }
 
@@ -385,11 +427,283 @@ function  _generatePad() {
     _generatePad();
 
 
-    var timer_play = document.querySelector('.timer_play');
-    var flip_card_inner = document.querySelector('.flip-card-inner');
+
 
     timer_play.addEventListener('click', function (event) {
-      
+
+      timer_play.style.display = 'none';
+      timer_pause.style.display = 'block';
+      timer_delete.style.display = 'block';
+
+      newFunc('play');
+
+
+
       flip_card_inner.style.transform = 'rotateY(180deg)';
 
     });
+
+    timer_delete.addEventListener('click', function (event) {
+
+      timer_play.style.display = 'none';
+      timer_pause.style.display = 'none';
+      timer_delete.style.display = 'none';
+      document.querySelector('.pin_hours').textContent = '00';
+      document.querySelector('.pin_minutes').textContent = '00';
+      document.querySelector('.pin_seconds').textContent = '00';
+
+      flip_card_inner.style.transform = 'rotateY(0deg)';
+
+    });
+
+    timer_pause.addEventListener('click', function (event) {
+
+      timer_play_pause.style.display = 'block';
+      timer_pause.style.display = 'none';
+      clearInterval(startTimer);
+      //flip_card_inner.style.transform = 'rotateY(0deg)';
+
+    });
+
+    timer_play_pause.addEventListener('click', function (event) {
+
+      timer_play_pause.style.display = 'none';
+      timer_pause.style.display = 'block';
+
+      newFunc('play_pause');
+      //clearInterval(startTimer);
+      //flip_card_inner.style.transform = 'rotateY(0deg)';
+
+    });
+
+
+    function newFunc(someval){
+
+      if(someval == 'play'){
+        var newtimehours = document.querySelector('.pin_hours').textContent;
+        var newtimemins = document.querySelector('.pin_minutes').textContent;
+        var newtimesecs = document.querySelector('.pin_seconds').textContent;
+      }else{
+
+        var newtimehours = start_timer.dataset.content.split(':')[0];
+        var newtimemins = start_timer.dataset.content.split(':')[1];
+        var newtimesecs = start_timer.dataset.content.split(':')[2];
+      }
+
+
+
+      start_timer.dataset.content = `${newtimehours}:${newtimemins}:${newtimesecs}`;
+
+      newtotalseconds = parseInt(newtimehours) * 60 * 60 + parseInt(newtimemins) * 60 + parseInt(newtimesecs);
+      console.log(newtotalseconds);
+
+      startTimer = setInterval(()=>{
+        newtotalseconds--;
+
+        timerhours =  Math.floor(newtotalseconds / 60 / 60);
+        timerminutes = Math.floor(newtotalseconds / 60) - (timerhours * 60);
+        timerseconds = newtotalseconds % 60;
+
+        newtimermodhours = timerhours < 10 ? '0'+timerhours : timerhours;
+        newtimermodminutes = timerminutes < 10 ? '0'+timerminutes : timerminutes;
+        newtimermodseconds = timerseconds < 10 ? '0'+timerseconds : timerseconds;
+
+
+
+        start_timer.dataset.content = `${newtimermodhours}:${newtimermodminutes}:${newtimermodseconds}`;
+
+        if(newtotalseconds == 0){
+          timer_play.style.display = 'block';
+          timer_pause.style.display = 'none';
+          timer_delete.style.display = 'block';
+        //  start_timer.dataset.content = `${newtimehours}:${newtimemins}:${newtimesecs}`;
+          clearInterval(startTimer);
+        }
+
+        //console.log(timerhours,timerminutes,timerseconds);
+      },1000);
+    }
+
+
+
+
+    window.onload = function() {
+
+    const hourHand = document.querySelector('.hourHand');
+    const minuteHand = document.querySelector('.minuteHand');
+    const secondHand = document.querySelector('.secondHand');
+    const time = document.querySelector('.time');
+    const clock = document.querySelector('.clock');
+    const audio = document.querySelector('.audio');
+    const timezonetime_htm =   document.querySelector('.timezone_time');
+
+    timezonetime_htm.innerHTML = '';
+
+    function setDate(){
+        const today = new Date();
+
+        const second = today.getSeconds();
+        const secondDeg = ((second / 60) * 360) + 360;
+        secondHand.style.transform = `rotate(${secondDeg}deg)`;
+
+
+
+        const minute = today.getMinutes();
+        const minuteDeg = ((minute / 60) * 360);
+        minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+
+        const hour = today.getHours();
+        const hourDeg = ((hour / 12 ) * 360 );
+        hourHand.style.transform = `rotate(${hourDeg}deg)`;
+
+        newsecond = second < 10 ? '0'+second : second;
+        newminiute = minute < 10 ? '0'+minute : minute;
+        newhour = hour < 10 ? '0'+hour : hour;
+
+        time.innerHTML = '<span>' + '<strong>' + newhour + '</strong>' + ' : ' + newminiute + ' : ' + '<small>' + newsecond +'</small>'+ '</span>';
+
+
+        let timezonehours = today.getHours();
+        const timezome_ampm = timezonehours > 12 ? 'PM' : 'AM';
+        timezonehours = timezonehours > 12 ? (timezonehours - 12) : timezonehours;
+        timezonehours = timezonehours < 10 ? '0'+timezonehours : timezonehours;
+
+        let timezonemins= today.getMinutes();
+        timezonemins = timezonemins < 10 ? '0'+timezonemins : timezonemins;
+
+        let timezoneday = today.getDay();
+
+
+        let timezonedate = today.getDate();
+        timezonedate = timezonedate < 10 ? '0'+timezonedate : timezonedate;
+
+        let timezonemonth = today.getMonth();
+
+        let values = getDayMonth(timezoneday,timezonemonth);
+
+        timezoneday = values.timezoneday;
+        timezonemonth = values.timezonemonth;
+
+
+        let timezoneyear = today.getFullYear();
+        //console.log(timezonehours,timezonemins,timezoneday,timezonedate,timezonemonth,timezome_ampm);
+
+
+        timezonetime_htm.innerHTML = `<span id='timezone_time'>${timezonehours}:${timezonemins}</span>
+        <span id='timezone_ampm'>${timezome_ampm}</span>
+        <span id='timezone_day'>${timezoneday}</span>
+        <span id='timezone_month'>${timezonemonth}</span>
+        <span id='timezone_date'>${timezonedate},</span>
+        <span id='timezone_date'>${timezoneyear}</span>`
+
+        //document.getElementById('timezone_time').textContent  =
+        differentTineZoneFunc();
+
+        }
+
+    setInterval(setDate, 1000);
+
+}
+
+
+function getDayMonth(timezoneday,timezonemonth){
+  switch (timezoneday) {
+    case 1: timezoneday = 'Mon,';break;
+    case 2: timezoneday = 'Tue,';break;
+    case 3: timezoneday = 'Wed,';break;
+    case 4: timezoneday = 'Thu,';break;
+    case 5: timezoneday = 'Fri,';break;
+    case 6: timezoneday = 'Sat,';break;
+    case 7: timezoneday = 'Sun,';break;
+    default:break;
+  }
+  switch (timezonemonth) {
+    case 0: timezonemonth = 'Jan';break;
+    case 1: timezonemonth = 'Feb';break;
+    case 2: timezonemonth = 'Mar';break;
+    case 3: timezonemonth = 'Apr';break;
+    case 4: timezonemonth = 'May';break;
+    case 5: timezonemonth = 'Jun';break;
+    case 6: timezonemonth = 'Jul';break;
+    case 7: timezonemonth = 'Aug';break;
+    case 8: timezonemonth = 'Sep';break;
+    case 9: timezonemonth = 'Oct';break;
+    case 10: timezonemonth = 'Nov';break;
+    case 11: timezonemonth = 'Dec';break;
+    default:break;
+  }
+
+  return{
+    timezonemonth:timezonemonth,
+    timezoneday : timezoneday
+  }
+}
+
+
+function differentTineZoneFunc(){
+  let city = document.querySelectorAll('.city');
+  let citesArray = [];
+
+  let different_timezones = document.querySelector('.different_timezones');
+
+  different_timezones.innerHTML = '';
+
+  for(i = 0 ; i < city.length ; i++){
+    if(city[i].checked){
+      citesArray.push(city[i].value);
+
+      let val = city[i].value.split('/')[1];
+      let cityname = '';
+      if(city[i].value.split('/')[1].includes('_')){
+        cityname = city[i].value.split('/')[1].replace('_',' ');
+      }else{
+        cityname = city[i].value.split('/')[1];
+      }
+
+      //console.log(val,cityname);
+
+      let localcitytime =  new Date().toLocaleString("en-US", {timeZone: city[i].value});
+
+      let todays = new Date(localcitytime);
+
+
+
+      let day = todays.getDay();
+      let month = todays.getMonth();
+      let date = todays.getDate();
+      date = date < 10 ? '0'+date : date;
+      let mins = todays.getMinutes();
+      mins = mins < 10 ? '0'+mins : mins;
+      let hrs = todays.getHours();
+      let ampm = hrs > 12 ? 'PM' : 'AM';
+      hrs = hrs > 12 ? (hrs - 12) : hrs;
+      hrs = hrs < 10 ? '0'+hrs : hrs;
+
+      let values = getDayMonth(day,month);
+
+      day = values.timezoneday;
+      month = values.timezonemonth;
+
+      //console.log(day,date,mins,hrs)
+
+
+      localcitytime = localcitytime.replace(',','').split(' ');
+
+      if(cityname == 'Kolkata')
+      cityname = 'New Delhi'
+
+      //console.log(localcitytime);
+
+      different_timezones.innerHTML += `<div class='specific_timezone' id=${val}>
+        <div class='spec_zone_data'>
+          <span>${cityname}</span>
+          <span>${day} ${month} ${date} </span>
+        </div>
+        <div class='spec_zone_time'><b>${hrs} : ${mins}</b><span> ${ampm}</span></div>
+      </div>`;
+
+
+
+    }
+  }
+}
