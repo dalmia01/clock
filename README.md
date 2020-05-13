@@ -1,6 +1,6 @@
     clock web app
 
-    visit site link https://web-clock-01.netlify.app/
+0. [visit site link. ] https://web-clock-01.netlify.app/
 
 1. [ Alarm. ](#alarm)
     1.a [SetAlarm .](#setalarm)
