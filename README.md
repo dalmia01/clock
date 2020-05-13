@@ -75,9 +75,8 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* Used Font Awesome Library for Fonts
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Font Awesome](https://www.npmjs.com/package/node-dependency-manager) - Used Font Awesome Library for Fonts
+* [NPM](https://www.npmjs.com/package/node-dependency-manager) - Node Dependency Manager
 
 ## Contributing
 
