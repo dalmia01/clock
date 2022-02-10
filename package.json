@@ -20,6 +20,6 @@
   "homepage": "https://github.com/dalmia01/clock#readme",
   "dependencies": {
     "concurrently": "^5.2.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^7.0.0"
   }
 }
